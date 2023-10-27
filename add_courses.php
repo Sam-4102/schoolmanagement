@@ -1,0 +1,163 @@
+
+<?php
+
+session_start();
+error_reporting(0);
+
+if(!isset ( $_SESSION['username']))
+{
+    header("location:login.php");
+}
+
+elseif($_SESSION['usertype']=='student')
+{
+    header("location:login.php");
+}
+
+    $host="localhost";
+    $user="root";
+    $password="";
+    $db="schoolproject";
+
+    $data=mysqli_connect($host,$user,$password,$db);
+
+    if(isset ( $_POST['add_courses']))
+   {
+    $c_name=$_POST['name'];
+    $c_description=$_POST['description'];
+    $file=$_FILES['image']['name'];
+
+    $dsc="./image/".$file;
+
+    $dsc_db="image/".$file;
+
+       $sql="INSERT INTO courses(name,description, image
+       VALUES ('$c_name','$c_description','$dsc_db')";
+        
+        $result=mysqli_query($data,$sql);
+
+        if($result)
+        {
+            echo"<script type='text/javascript'> 
+            alert('Data Upload Success');
+            
+            </script>";
+        }
+
+        else
+        {
+            echo"Upload Failed";
+        }
+}
+
+
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Admin's Dashboard</title>
+
+    <style type="text/css">
+
+    .div_deg
+    {
+        background-color: plum;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        width: 500px;
+    }
+
+    </style>
+
+    <?php
+         include 'admissioncss.php'
+    ?>
+
+
+
+
+</head>
+<body>
+     <header class="header">
+     <a href=""> Admin's Dashboard </a>
+
+     <div class="logout">
+
+       <a href="login.php" class="btn btn-primary"> Logout </a>
+
+    </div>
+</header>
+
+<aside>
+
+<ul >
+<li>
+
+        <a href="admission.php"> Admission</a>
+    </li>
+
+    <li>
+        <a href="add_student.php"> Add Students</a>
+    </li>
+
+    <li>
+        <a href="view_student.php"> View Students</a>
+    </li>
+
+    <li>
+        <a href="add_teacher.php"> Add Teachers</a>
+    </li>
+
+    <li>
+        <a href="view_teacher.php"> View Teachers</a>
+    </li>
+
+    <li>
+        <a href="add_ courses.php"> Add Courses</a>
+    </li>
+
+    <li>
+        <a href="view_courses.php">View Courses </a>
+    </li>
+
+    
+</ul>
+    
+
+</aside>
+
+<div class="content"><center>
+   <h1> Add Courses</h1><br><br>
+<div class="div_deg">
+    <form action="#" method=" POST" enctype="multipart/
+    form-data">
+        <div>
+        <label> Course Name: </label>
+        <input type="text" name="name">
+        </div>
+        <br>
+        <div>
+        <label> Description: </label>
+        <textarea name="description"> </textarea>
+        </div>
+        <br>
+        <div>
+        <label> Image: </label>
+        <input type="file" name="name">
+        </div>
+        <br>
+        <div>
+        <input type="submit" name="add_courses" value="Add Course"
+        class="btn btn-primary">
+        </div>
+</form>
+</div>
+
+</center>
+</div>
+
+</body>
+</html>

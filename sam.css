@@ -1,0 +1,55 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.header{
+    background-color: plum;
+    line-height: 70px;
+    text-align: center;
+ 
+   
+    
+}
+
+a,a:hover{
+    text-decoration: none!important;
+    font-size: 25px;
+  
+}
+
+.logout{
+    float:right;
+    padding-right: 30px;
+}
+
+ul{
+    background-color: #414858;
+    width:16%;
+    height: 100%;
+    position: fixed;
+    padding-top: 5%;
+    text-align: center;
+    font-size: 30px;
+   
+}
+
+ul li{
+    padding-bottom: 30px;
+
+    font-weight: bold;
+}
+
+ul li a:hover{
+    color: plum;
+    text-decoration: none;
+   
+}
+
+
+.content{
+    margin-left: 20%;
+    margin-top: 5%;
+}
